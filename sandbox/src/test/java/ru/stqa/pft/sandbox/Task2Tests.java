@@ -16,6 +16,6 @@ public class Task2Tests {
   public void testDistance2() {
     Point p3 = new Point(4,3);
     Point p4 = new Point(8,6);
-    Assert.assertEquals(p3.distance(p4),5);
+    Assert.assertEquals(p3.distance(p3,p4),5);
   }
 }
