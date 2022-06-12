@@ -22,11 +22,11 @@ public class ContactHelper extends HelperBase{
     type(By.name("address"),contactData.address());
     type(By.name("home"),contactData.phone());
     type(By.name("email"),contactData.email());
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.group());
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+    //if (creation) {
+      //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.group());
+    //} else {
+     // Assert.assertFalse(isElementPresent(By.name("new_group")));
+    //}
   }
 
   public void initNewContact() {
@@ -51,5 +51,16 @@ public class ContactHelper extends HelperBase{
 
   public void editSubmit() {
     click(By.name("update"));
+  }
+
+  public void createContact(ContactData contact) {
+    initNewContact();
+    fillContactForm(contact, true);
+    submitContactCreation();
+
+  }
+
+  public boolean isThereContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
