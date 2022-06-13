@@ -21,9 +21,10 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void homePage() {
-    if (isElementPresent(By.id("maintable"))) {
+    //wd.get("http://localhost/addressbook/");
+     if (isElementPresent(By.id("maintable"))) {
       return;
     } else
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 }
