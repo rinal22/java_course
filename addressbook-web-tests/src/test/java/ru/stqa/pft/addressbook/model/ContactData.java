@@ -1,48 +1,75 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String name;
-  private final String middlename;
-  private final String lastname;
-  private final String address;
-  private final String phone;
-  private final String email;
+  private int id = Integer.MAX_VALUE;
+  private String name;
+  private String middlename;
+  private String lastname;
+  private String address;
+  private String phone;
+  private String email;
 
-  public void setId(int id) {this.id = id;}
-
-  public int getId() {return id;}
-
-  public String getName() {return name;}
-
-  public String getMiddlename() {return middlename;}
-
-  public String getLastname() {return lastname;}
-
-  public String getAddress() {return address;}
-
-  public String getPhone() {return phone;}
-
-  public String getEmail() {return email;}
-
-  public ContactData(String name, String middlename, String lastname, String address, String phone, String email) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.address = address;
-    this.phone = phone;
-    this.email = email;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
   }
 
-  public ContactData(int id, String name, String middlename, String lastname, String address, String phone, String email) {
-    this.id = id;
+  public ContactData withName(String name) {
     this.name = name;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
     this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
     this.address = address;
+    return this;
+  }
+
+  public ContactData withPhone(String phone) {
     this.phone = phone;
+    return this;
+  }
+
+  public ContactData setEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getMiddlename() {
+    return middlename;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   @Override
@@ -71,6 +98,8 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
+
 }
 
 
