@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.model;
 
+
 public class GroupData {
   private int id;
   private final String name;
@@ -10,36 +11,13 @@ public class GroupData {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
-  }
+  public int getId() {return id;}
 
-  public String getHeader() {
-    return header;
-  }
+  public String getName() {return name;}
 
-  public String getFooter() {
-    return footer;
-  }
+  public String getHeader() {return header;}
 
-  public int getId() {
-    return id;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    GroupData groupData = (GroupData) o;
-
-    return name != null ? name.equals(groupData.name) : groupData.name == null;
-  }
-
-  @Override
-  public int hashCode() {
-    return name != null ? name.hashCode() : 0;
-  }
+  public String getFooter() {return footer;}
 
   public GroupData(String name, String header, String footer) {
 
@@ -63,5 +41,20 @@ public class GroupData {
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    GroupData groupData = (GroupData) o;
+
+    return name != null ? name.equals(groupData.name) : groupData.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
   }
 }
