@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -19,6 +20,7 @@ public class GroupCreationTests extends TestBase {
     group.withId(after.stream().mapToInt(g -> g.getId()).max().getAsInt());
     before.add(group);
     Assert.assertEquals(before,after);
+    MatcherAssert.assertThat(after, CoreMatches.equalTo(before));
   }
 
 }
