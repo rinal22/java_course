@@ -31,7 +31,7 @@ public class ContactChangeTests extends TestBase {
     app.contact().modify(contact);
     app.goTo().homePage();
     Contacts after = app.contact().all();
-    //Assert.assertEquals(after.size(), before.size());
+    Assert.assertEquals(after.size(), before.size());
 
 
     assertEquals(after.size(), before.size());
