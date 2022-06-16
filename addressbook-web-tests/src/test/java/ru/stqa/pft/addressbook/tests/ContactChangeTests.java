@@ -24,14 +24,14 @@ public class ContactChangeTests extends TestBase {
   }
   @Test
   public void testContactDeletion() throws Exception {
-    Contacts before = app.contact().all();
+    Contacts before = app.contact().allCache();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withName("Name11").withMiddlename("Middle_name_test11").withLastname("Last_name_test11").withAddress("11adress_test 123").withPhone("111234567890");
 
     app.contact().modify(contact);
     app.goTo().homePage();
     Assert.assertEquals(app.contact().count(), before.size());
-    Contacts after = app.contact().all();
+    Contacts after = app.contact().allCache();
 
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));

@@ -15,13 +15,13 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation() throws Exception {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.contact().allCache();
     ContactData contact = new ContactData().withName("Name1").withLastname("Last_name_test");
 
     app.contact().create(contact);
     app.goTo().homePage();
     Assert.assertEquals(app.contact().count(), before.size()+1);
-    Contacts after = app.contact().all();
+    Contacts after = app.contact().allCache();
 
     assertEquals(after.size(), before.size() + 1);
     assertThat(after, equalTo
@@ -31,14 +31,14 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.contact().allCache();
     ContactData contact = new ContactData().withName("Name1'").withLastname("Last_name_test");
 
     app.contact().create(contact);
     app.goTo().homePage();
     // Assert.assertEquals(after.size(), before.size());
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.contact().allCache();
 
     assertThat(after, equalTo(before));
   }

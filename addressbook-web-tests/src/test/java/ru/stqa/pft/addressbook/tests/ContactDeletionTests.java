@@ -23,11 +23,11 @@ public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDeletion() throws Exception {
-    Contacts before = app.contact().all();
+    Contacts before = app.contact().allCache();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     Assert.assertEquals(app.contact().count(), before.size()-1);
-    Contacts after = app.contact().all();
+    Contacts after = app.contact().allCache();
 
     before.remove(deletedContact);
     assertThat(after, equalTo(before.without(deletedContact)));
