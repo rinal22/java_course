@@ -47,14 +47,14 @@ public class GroupDataGenerator {
     }
   }
 
-    private void saveAsXml(List<GroupData> groups, File file) throws IOException {
-      XStream xStream = new XStream();
-      xStream.processAnnotations(GroupData.class);
-      String xml = xStream.toXML(groups);
-      Writer writer = new FileWriter(file);
+  private void saveAsXml(List<GroupData> groups, File file) throws IOException {
+    XStream xStream = new XStream();
+    xStream.processAnnotations(GroupData.class);
+    String xml = xStream.toXML(groups);
+    try (Writer writer = new FileWriter(file)) {
       writer.write(xml);
-      writer.close();
     }
+  }
 
 
   private List<GroupData> generateGroups(int count) {
@@ -62,9 +62,9 @@ public class GroupDataGenerator {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i = 0; i < count; i++) {
       groups.add(new GroupData().
-              withName(String.format("test %s", i)).
-              withHeader(String.format("header %s", i)).
-              withFooter(String.format("footer %s", i))
+              withName(String.format("1test %s", i)).
+              withHeader(String.format("1header %s", i)).
+              withFooter(String.format("1footer %s", i))
 
       );
     }
@@ -73,20 +73,21 @@ public class GroupDataGenerator {
 
   private void saveAsCsv(List<GroupData> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
 
-    for (GroupData group : groups) {
-      writer.write(String.format(
-              "%s;%s;%s\n",
 
-              group.getName(),
-              group.getHeader(),
-              group.getFooter()
+    try (Writer writer = new FileWriter(file)) {
+      for (GroupData group : groups) {
+        writer.write(String.format(
+                "%s;%s;%s\n",
 
-      ));
+                group.getName(),
+                group.getHeader(),
+                group.getFooter()
+
+        ));
+      }
     }
-    writer.close();
+
+
   }
-
-
 }
