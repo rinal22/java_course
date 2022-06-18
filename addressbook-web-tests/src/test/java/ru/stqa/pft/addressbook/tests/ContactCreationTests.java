@@ -5,6 +5,8 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -12,11 +14,12 @@ import static org.testng.Assert.assertEquals;
 public class ContactCreationTests extends TestBase {
 
 
-  @Test
+  @Test (enabled = false)
   public void testContactCreation() throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().allCache();
-    ContactData contact = new ContactData().withName("Name1").withLastname("Last_name_test");
+    File photo = new File("src/test/resources/vinni-pukh.png");
+    ContactData contact = new ContactData().withName("Name1").withLastname("Last_name_test").withPhoto(photo);
 
     app.contact().create(contact);
     app.goTo().homePage();
@@ -28,7 +31,16 @@ public class ContactCreationTests extends TestBase {
             (before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
-  @Test
+  @Test (enabled = true)
+  public void testCurretDir() {
+    File currentDir = new File(".");
+    System.out.println(currentDir.getAbsolutePath());
+    File photo = new File("src/test/resources/vinni-pukh.png");
+    System.out.println(photo.getAbsolutePath());
+    System.out.println(photo.exists());
+  }
+
+  @Test (enabled = false)
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().allCache();
