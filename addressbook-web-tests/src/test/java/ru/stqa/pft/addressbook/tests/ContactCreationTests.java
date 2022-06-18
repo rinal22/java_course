@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.tests;
 
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -21,7 +23,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 
 public class ContactCreationTests extends TestBase {
-
 
   @DataProvider
   public Iterator<Object[]> validContacts() throws IOException {
@@ -45,6 +46,7 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) throws Exception {
+
     app.goTo().homePage();
     Contacts before = app.contact().allCache();
     //File photo = new File("src/test/resources/vinni-pukh.png");
@@ -52,15 +54,16 @@ public class ContactCreationTests extends TestBase {
 
     app.contact().create(contact);
     app.goTo().homePage();
-    Assert.assertEquals(app.contact().count(), before.size()+1);
+    Assert.assertEquals(app.contact().count(), before.size() + 1);
     Contacts after = app.contact().allCache();
 
     assertEquals(after.size(), before.size() + 1);
     assertThat(after, equalTo
             (before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testCurretDir() {
     File currentDir = new File(".");
     System.out.println(currentDir.getAbsolutePath());
@@ -69,7 +72,7 @@ public class ContactCreationTests extends TestBase {
     System.out.println(photo.exists());
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().allCache();
