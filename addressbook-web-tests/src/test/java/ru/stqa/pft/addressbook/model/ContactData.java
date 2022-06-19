@@ -4,33 +4,33 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import java.io.File;
 import javax.persistence.*;
+import java.io.File;
 
 @Entity
-@Table(name="addressbook")
+@Table(name = "addressbook")
 @XStreamAlias("Contact")
 public class ContactData {
   @XStreamOmitField
   @Id
-  @Column(name="id")
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
-  @Column(name="firstname")
+  @Column(name = "firstname")
   private String name;
-  @Column(name="middlename")
+  @Column(name = "middlename")
   private String middlename;
-  @Column(name="lastname")
+  @Column(name = "lastname")
   private String lastname;
-  @Column(name="address")
+  @Column(name = "address")
   @Type(type = "text")
   private String address;
-  @Column(name="home")
+  @Column(name = "home")
   @Type(type = "text")
   private String phone;
-  @Column(name="mobile")
+  @Column(name = "mobile")
   @Type(type = "text")
   private String mobilePhone;
-  @Column(name="work")
+  @Column(name = "work")
   @Type(type = "text")
   private String workPhone;
 
@@ -45,7 +45,7 @@ public class ContactData {
   @Transient
   private String allEmails;
 
-  @Column(name="photo")
+  @Column(name = "photo")
   @Type(type = "text")
   private String photo;
 
@@ -94,6 +94,7 @@ public class ContactData {
     this.email = email;
     return this;
   }
+
   public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
@@ -114,11 +115,11 @@ public class ContactData {
     this.workPhone = workPhone;
     return this;
   }
+
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
-
 
 
   public int getId() {
@@ -144,22 +145,39 @@ public class ContactData {
   public String getPhone() {
     return phone;
   }
-  public String getMobilePhone() {return mobilePhone;}
 
-  public String getWorkPhone() {return workPhone;}
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
 
 
-  public String getAllPhones() {return allPhones;}
+  public String getAllPhones() {
+    return allPhones;
+  }
 
-  public String getEmail() {return email;}
+  public String getEmail() {
+    return email;
+  }
 
-  public String getEmail2() {return email2;}
+  public String getEmail2() {
+    return email2;
+  }
 
-  public String getEmail3() {return email3;}
+  public String getEmail3() {
+    return email3;
+  }
 
-  public String getAllEmails() {return allEmails;}
+  public String getAllEmails() {
+    return allEmails;
+  }
 
-  public File getPhoto() {return new File(photo);}
+  public File getPhoto() {
+    return new File(photo);
+  }
 
   @Override
   public String toString() {

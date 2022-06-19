@@ -19,6 +19,7 @@ public class ContactChangeTests extends TestBase {
       app.contact().create(new ContactData().withName("Name1").withLastname("Last_name_test"));
     }
   }
+
   @Test
   public void testContactModification() throws Exception {
     Contacts before = app.db().contacts();
@@ -33,7 +34,6 @@ public class ContactChangeTests extends TestBase {
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
-
 
 
 }

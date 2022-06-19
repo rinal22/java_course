@@ -11,18 +11,18 @@ import javax.persistence.Table;
 
 @XStreamAlias("Group")
 @Entity
-@Table(name="group_list")
+@Table(name = "group_list")
 public class GroupData {
   @XStreamOmitField
   @Id
-  @Column(name="group_id")
+  @Column(name = "group_id")
   private int id = Integer.MAX_VALUE;
-  @Column(name="group_name")
+  @Column(name = "group_name")
   private String name;
-  @Column(name="group_header")
+  @Column(name = "group_header")
   @Type(type = "text")
   private String header;
-  @Column(name="group_footer")
+  @Column(name = "group_footer")
   @Type(type = "text")
   private String footer;
 
@@ -46,13 +46,21 @@ public class GroupData {
     return this;
   }
 
-  public int getId() {return id;}
+  public int getId() {
+    return id;
+  }
 
-  public String getName() {return name;}
+  public String getName() {
+    return name;
+  }
 
-  public String getHeader() {return header;}
+  public String getHeader() {
+    return header;
+  }
 
-  public String getFooter() {return footer;}
+  public String getFooter() {
+    return footer;
+  }
 
   @Override
   public String toString() {
