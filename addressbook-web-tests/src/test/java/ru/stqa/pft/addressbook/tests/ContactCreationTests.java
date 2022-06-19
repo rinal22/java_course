@@ -1,11 +1,9 @@
 package ru.stqa.pft.addressbook.tests;
 
 import com.thoughtworks.xstream.XStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.annotations.DataProvider;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
@@ -13,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,14 +72,14 @@ public class ContactCreationTests extends TestBase {
   @Test(enabled = false)
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
-    Contacts before = app.contact().allCache();
+    Contacts before = app.db().contacts();
     ContactData contact = new ContactData().withName("Name1'").withLastname("Last_name_test");
 
     app.contact().create(contact);
     app.goTo().homePage();
     // Assert.assertEquals(after.size(), before.size());
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().allCache();
+    Contacts after = app.db().contacts();
 
     assertThat(after, equalTo(before));
   }
