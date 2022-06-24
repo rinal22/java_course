@@ -30,7 +30,7 @@ public class AddContactToGroup extends TestBase {
               withEmail("mail44@mail.ru")
       );
     }
-
+    app.goTo().homePage();
     app.contact().showContactsWithoutGroup();
     Set<ContactData> contactsWithoutGroup = app.contact().all();
     if (contactsWithoutGroup.size() == 0) {
@@ -47,7 +47,7 @@ public class AddContactToGroup extends TestBase {
 
   @Test
   public void testAddInGroupContact() {
-
+    app.goTo().homePage();
     app.contact().showContactsWithoutGroup();
     Set<ContactData> contactsWithoutGroup = app.contact().all();
 
