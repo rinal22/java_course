@@ -42,7 +42,7 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @Test(dataProvider = "validContacts")
+  @Test (dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) throws Exception {
     Contacts before = app.db().contacts();
     app.goTo().homePage();

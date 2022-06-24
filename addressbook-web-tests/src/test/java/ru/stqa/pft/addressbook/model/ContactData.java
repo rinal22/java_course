@@ -35,7 +35,9 @@ public class ContactData {
   @Column(name = "work")
   @Type(type = "text")
   private String workPhone;
-
+  @Column(name = "phone2")
+  @Type(type = "text")
+  private String phone2;
   @Transient
   private String allPhones;
   @Type(type = "text")
@@ -103,7 +105,10 @@ public class ContactData {
     this.mobilePhone = mobilePhone;
     return this;
   }
-
+  public ContactData withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
+  }
 
   public ContactData withEmail(String email) {
     this.email = email;
@@ -199,7 +204,9 @@ public class ContactData {
     return workPhone;
   }
 
-
+  public String getPhone2() {
+    return phone2;
+  }
   public String getAllPhones() {
     return allPhones;
   }
