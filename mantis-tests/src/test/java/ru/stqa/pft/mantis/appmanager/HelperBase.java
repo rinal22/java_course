@@ -53,7 +53,9 @@ public class HelperBase {
     }
   }
 
-
+  public void alertConfirmation() {
+    wd.switchTo().alert().accept();
+  }
   boolean isElementPresent(By locator) {
     try {
       wd.findElement(locator);
