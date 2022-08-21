@@ -31,6 +31,15 @@ public class SoapTests extends TestBase{
     assertEquals(issue.getSummary(), created.getSummary());
   }
 
+  @Test
+  public void testSkippedIssue() throws MalformedURLException, ServiceException, RemoteException {
+    int createdIssueId = 2;
+    skipIfNotFixed(createdIssueId);
 
+        /*
+        В Mantis задача с id=2 в статусе "открыта". Для этой задачи isIssueOpen=true,
+        skipIfNotFixed срабатывает и тест пропускается
+         */
+  }
 
 }

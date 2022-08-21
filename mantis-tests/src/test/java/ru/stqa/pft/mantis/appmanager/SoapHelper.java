@@ -10,6 +10,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -50,6 +52,12 @@ public class SoapHelper {
             .withDescription(createdIssueData.getDescription())
             .withProject(new Project()).withId(createdIssueData.getProject().getId().intValue())
             .withName(createdIssueData.getProject().getName());
+
+  }
+
+  public IssueData getIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    return mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
 
   }
 }
