@@ -13,8 +13,8 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void managePage() {
-    click(By.xpath("//a[@href='/mantisbt-2.25.4/manage_overview_page.php']"));
-    click(By.xpath("//a[@href='/mantisbt-2.25.4/manage_user_page.php']"));
+    click(By.xpath("//div[@id='sidebar']/ul/li[7]/a/i"));
+    click(By.xpath("//ul[@class='nav nav-tabs padding-18']/li[2]"));
 
   }
 
